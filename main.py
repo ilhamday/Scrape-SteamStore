@@ -23,12 +23,20 @@ for s in steams:
     print('---')
     title = s.find('span', attrs={'class': 'title'}).text
 
-    platform = s.find('p').findAll('span')
+    # Get span element
     platform_list = []
+    platform = s.find('p').findAll('span')
+
+    # Loop through span
     for pl in platform:
-        if len(pl.attrs['class']) >= 1:
+        # if attribute class has more than 1 value, get the last one
+        if len(pl.attrs['class']) > 1:
             p = pl.attrs['class'][1]
-            platform_list.append(p)
+        else:
+            p = pl.attrs['class'][0]
+        
+        platform_list.append(p)
+
     price = s.find('div', attrs={'class': 'search_price'}).text
     img_link = s.find('img').attrs
     img_link = img_link['src']
