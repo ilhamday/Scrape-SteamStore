@@ -1,11 +1,6 @@
 import requests
-import requests_cache
 from bs4 import BeautifulSoup
 from flask import Flask, render_template
-
-# requests_cache.install_cache('steamstore_chace')
-# Check if get the data from cache
-# print(f"Used Cache: {res.from_cache}")
 
 
 # initialization flask
@@ -29,29 +24,3 @@ def top_sellers():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-    
-# titles = []
-# for s in steams:
-#     print('---')
-#     title = s.find('span', attrs={'class': 'title'}).text
-
-#     # Get span element
-#     platform_list = []
-#     platform = s.find('p').findAll('span')
-
-#     # Loop through span
-#     for pl in platform:
-#         # if attribute class has more than 1 value, get the last one
-#         if len(pl.attrs['class']) > 1:
-#             p = pl.attrs['class'][1]
-#         else:
-#             p = pl.attrs['class'][0]
-        
-#         platform_list.append(p)
-
-#     price = s.find('div', attrs={'class': 'search_price'}).text
-#     img_link = s.find('img').attrs
-#     img_link = img_link['src']
-   
-#     print(f'{title} -- {price} -- {img_link} -- {platform_list}')
